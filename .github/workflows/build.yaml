@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  pull_request:
+    paths:
+      - '*.yaml'
+      - '.github/workflows/build.yml'
+
+jobs:
+  build:
+    name: Build ESPHome project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v5
+      - name: ESPHome
+        uses: esphome/build-action@v7
+        with:
+          yaml-file: main.yaml
+          version: stable
