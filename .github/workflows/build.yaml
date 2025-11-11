@@ -8,6 +8,7 @@ on:
     branches: [ main ]
 
 jobs:
+  # see https://github.com/esphome/esphome-project-template/tree/main/.github/workflows
   build:
     name: Build ESPHome project
     runs-on: ubuntu-latest

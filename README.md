@@ -25,7 +25,16 @@ Main characteristics are:
   * 8 relay channels, both NC and NO contacts available
 
 * 220V to 5V power adapter (5W), bought on Aliexpress (4€ in Oct 2025)
+
 * Temperature sensor, bought on Aliexpress (few € in Oct 2025)
+
+  * MAX6675 + thermocouple for reading pipe temperature,
+    see https://esphome.io/components/sensor/max6675/
+
+  * DHT11: Digital Temperature Humidity Sensor,
+    see https://esphome.io/components/sensor/dht/
+
+
 
 
 ## ESPHome setup

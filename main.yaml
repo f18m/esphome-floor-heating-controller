@@ -1,6 +1,6 @@
 esphome:
-  name: floorheating-controller
-  friendly_name: FloorHeatingController
+  name: floorheatingactuatorcontroller
+  friendly_name: FloorHeatingActuatorController
 
 esp32:
   board: esp32dev
@@ -25,20 +25,15 @@ wifi:
 
   # Optional manual IP
   manual_ip:
-    static_ip: 192.168.1.69
+    static_ip: 192.168.1.96
     gateway: 192.168.1.254
     subnet: 255.255.255.0
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "FloorheatingController"
+    ssid: "Floorheatingactuatorcontroller"
     password: "cxjpHijNRvL5"
 
-# WiFi information sensors
-sensor:
-  - platform: wifi_signal
-    name: Signal Strength
-    update_interval: 60s
 text_sensor:
   - platform: wifi_info
     ip_address:
@@ -48,10 +43,48 @@ text_sensor:
       name: MAC
       icon: mdi:network-outline
 
+# Captive Portal is the portal created by this node when Wifi connection fails
 captive_portal:
     
+# Webserver is exposed under regular use
+web_server:
+  port: 80
+  # Disable OTA updates for web_server only
+  # Captive portal will still have OTA access since it auto-loads the web server OTA platform
+  ota: false
+
+# SPI bus configuration
+# MOSI is not required because the slave device does not accept any input
+#   SPI	MOSI    MISO    SCLK    CS
+# VSPI	GPIO23	GPIO19	GPIO18	GPIO5
+# HSPI	GPIO13	GPIO12	GPIO14	GPIO15
+spi:
+  miso_pin: GPIO16
+  clk_pin: GPIO17
+
+sensor:
+  # Temperature sensor on SPI, see https://esphome.io/components/sensor/max6675/
+  - platform: max6675
+    name: "Heating pipe Temperature"
+    cs_pin: GPIO15
+    update_interval: 10s
+
+  # WiFi information sensors
+  - platform: wifi_signal
+    name: Signal Strength
+    update_interval: 60s
+
+  - platform: dht
+    pin: GPIO5
+    model: DHT11
+    temperature:
+      name: "Ambient Temperature"
+    humidity:
+      name: "Ambient Humidity"
+    update_interval: 10s
 
 switch:
+  # relays use GPIOS 12-14, 23,25-27, 32-33
   - platform: gpio
     name: "LED"
     pin: GPIO23
