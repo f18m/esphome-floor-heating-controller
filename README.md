@@ -1,6 +1,6 @@
 # floor-heating-controller
 
-ESPHome project to present to [HomeAssistant](https://www.home-assistant.io/) a floor heating controller, i.e. a board
+This is an [ESPHome](https://esphome.io/) project to present to [HomeAssistant](https://www.home-assistant.io/) a floor heating controller, i.e. a board
 that can turn on or off the flow of warm water in under-floor heating pipes.
 
 ## Highlights
@@ -12,10 +12,10 @@ typically available on Aliexpress, and very cheap; easy to replace in future if 
 or your HomeAssistant instance has troubles;
 * Presents _N_ basic switches plus 2 temperature sensors to Home Assistant; each switch represents an heating under-floor circuit; temperatures are sampled for both the incoming warm water and for room temperature
 
-<img title="Overview" alt="Overview" src="images/overview.drawio.png">
-
 
 ## Architecture Overview
+
+<img title="Overview" alt="Overview" src="images/overview.drawio.png">
 
 This project allows to easily setup in HomeAssistant a [Generic Thermostat](https://www.home-assistant.io/integrations/generic_thermostat/) entity that allows to control the floor heating system:
 
@@ -27,7 +27,7 @@ climate:
     heater: switch.floorheatingactuatorcontroller_relay1
     target_sensor: sensor.floorheatingactuatorcontroller_ambient_temperature
     min_temp: 15
-    max_temp: 21
+    max_temp: 25
     ac_mode: false
     target_temp: 17
     cold_tolerance: 0.3
@@ -35,8 +35,11 @@ climate:
     min_cycle_duration:
       minutes: 1
     initial_hvac_mode: "off"
-    away_temp: 16
     precision: 0.1
+    # preset mode temps
+    away_temp: 20
+    home_temp: 22
+    sleep_temp: 21
 ```
 
 One climate entity is connected to 1 temperature sensor and to 1 switch for the "heater" exposed by this ESPHome project.
