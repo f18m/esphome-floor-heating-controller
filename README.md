@@ -94,6 +94,33 @@ TODO
 ## Full ESPHome configuration
 
 See the [main.yaml](./main.yaml) file.
+Please note that this is an [ESPHome package](https://esphome.io/components/packages/) and thus it uses [substitutions](https://esphome.io/components/substitutions/) to make the YAML config file as reusable as possible.
+
+An actual ESPHome YAML config using this package could be:
+
+```yaml
+packages:
+  remote_package_files:
+    url: https://github.com/f18m/floor-heating-controller/
+    files: 
+      - path: main.yaml
+        vars:
+          encryption_key: !secret encryption_key
+          wifi_ssid: !secret wifi_ssid
+          wifi_password: !secret wifi_password
+          wifi_ap_password: !secret wifi_ap_password
+          ota_password: !secret ota_password
+    ref: main  # optional
+    refresh: 1d  # optional
+
+esphome:
+  name: "floorheating-p0"
+  friendly_name: FloorHeatingActuatorController-P0
+```
+
+which is basically assigning the secrets defined in the ESPHome global "secrets.yaml" to the variables of this package.
+Then it's overriding just the name & friendly name from the package.
+
 
 ## Similar projects
 
