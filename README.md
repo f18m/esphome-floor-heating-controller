@@ -128,6 +128,13 @@ which is basically assigning the secrets defined in the ESPHome global "secrets.
 Then it's overriding just the name & friendly name from the package.
 
 
+## TODO
+
+Write the [external component](https://esphome.io/components/external_components/) that will make it possible
+to control relays using the local temp sensor when connection to HA fails.
+
+
+
 ## Similar projects
 
 * [Smart Underfloor Heating Controller](https://hackaday.io/project/190828-smart-underfloor-heating-controller)

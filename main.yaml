@@ -61,6 +61,7 @@ spi:
 sensor:
   # Temperature sensor on SPI, see https://esphome.io/components/sensor/max6675/
   - platform: max6675
+    id: heating_pipe_sensor
     name: "Heating pipe Temperature"
     cs_pin: GPIO15
     update_interval: 60s
@@ -71,6 +72,7 @@ sensor:
     update_interval: 60s
 
   - platform: dht
+    id: ambient_sensor
     pin: GPIO5
     model: DHT11
     temperature:
