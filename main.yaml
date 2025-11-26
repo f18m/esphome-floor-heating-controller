@@ -13,11 +13,11 @@ logger:
 # Enable Home Assistant API
 api:
   encryption:
-    key: "I3R5Nv3wkiOT85A1hLs1PZZB3orL15TB9W6K6Jc9tmE="
+    key: !secret encryption_key
 
 ota:
   - platform: esphome
-    password: "55feed1a933b5b324b482cf688b88ce9"
+    password: !secret ota_password
 
 wifi:
   ssid: !secret wifi_ssid
@@ -26,7 +26,7 @@ wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Floorheatingactuatorcontroller"
-    password: "cxjpHijNRvL5"
+    password: !secret wifi_ap_password
 
 text_sensor:
   - platform: wifi_info
@@ -36,6 +36,8 @@ text_sensor:
     mac_address:
       name: MAC
       icon: mdi:network-outline
+  - platform: version
+    name: "ESPHome Version"
 
 # Captive Portal is the portal created by this node when Wifi connection fails
 captive_portal:
