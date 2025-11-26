@@ -9,6 +9,10 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  # required in case of tags to update releases
+  contents: write
+
 jobs:
   # see https://github.com/esphome/esphome-project-template/tree/main/.github/workflows
   build:
