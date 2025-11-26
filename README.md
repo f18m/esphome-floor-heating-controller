@@ -1,7 +1,9 @@
 # floor-heating-controller
 
-This is an [ESPHome](https://esphome.io/) project to present to [HomeAssistant](https://www.home-assistant.io/) a floor heating controller, i.e. a board
-that can turn on or off the flow of warm water in under-floor heating pipes.
+This is an [ESPHome](https://esphome.io/) project to present to [HomeAssistant](https://www.home-assistant.io/) a floor heating controller, i.e. a board that can turn on or off the flow of warm water in under-floor heating pipes.
+
+In particular this project provides an [ESPHome package](https://esphome.io/components/packages/) that is easy to reference
+from an ESPHome configuration. Keep reading for more details.
 
 ## Highlights
 
@@ -49,26 +51,29 @@ So if you have e.g. 5 rooms on your floor and you want to control heating indepe
 * cable the thermal actuator of each room to each relay available on this ESPHome project (see below ESP32 board details)
 * define a Generic Thermostat for each room
 
+Please note that instead of writing YAML code in your HomeAssistant `configuration.yaml` file you probably
+want to use the HomeAssistant UI: look for Helpers and choose `Generic Thermostat` from the list.
+
 
 ## Bill Of Material
 
-* ESP32 relay board [bought on Aliexpress](https://it.aliexpress.com/item/1005007027676026.html?spm=a2g0o.order_list.order_list_main.31.42f53696cth4st&gatewayAdapt=glo2ita) (17.5€ in Oct 2025)
-Main characteristics are:
+* ESP32 relay board [bought on Aliexpress](https://it.aliexpress.com/item/1005007027676026.html?spm=a2g0o.order_list.order_list_main.31.42f53696cth4st&gatewayAdapt=glo2ita) (17.5€ in Oct 2025).
+Its main characteristics are:
 
-  * ESP32-WROOM-32E module
+  * Sports an [ESP32-WROOM-32E module](./datasheets/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf)
   * 5V DC power supply terminal
   * 8 relay channels, both NC and NO contacts available
 
-* 220V to 5V power adapter (5W), bought on Aliexpress (4€ in Oct 2025)
+* 220V to 5V power adapter (5W), [bought on Aliexpress](https://it.aliexpress.com/item/1005006981553550.html?spm=a2g0o.order_list.order_list_main.47.45de36964bR8Kp&gatewayAdapt=glo2ita) (4€ in Oct 2025)
 
 * Temperature sensors, bought on Aliexpress (few € in Oct 2025)
 
-  * MAX6675 + thermocouple for reading pipe temperature,
+  * `MAX6675` and a K-type thermocouple for reading pipe temperature,
     see https://esphome.io/components/sensor/max6675/
-  * DHT11: Digital Temperature Humidity Sensor,
+  * `DHT11`: Digital Temperature Humidity Sensor,
     see https://esphome.io/components/sensor/dht/
 
-## ESP32 Board Pinout
+## ESP32 Relay Board Pinout
 
 The ESP32 relay board currently being used has the following pinout:
 
@@ -88,7 +93,8 @@ See https://esphome.io/guides/faq.html#why-am-i-getting-a-warning-about-strappin
 
 In addition to these, the following GPIOs are used for the temperature sensors:
 
-TODO
+* GPIO5: `DHT11` sensor
+* GPIO16 (MISO), GPIO17 (CLK) and GPIO15 (CS): for the SPI bus to read the `MAX6675` sensor
 
 
 ## Full ESPHome configuration

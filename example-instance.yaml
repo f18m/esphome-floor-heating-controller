@@ -4,7 +4,7 @@ packages:
     files: 
       - path: main.yaml
         vars:
-          encryption_key: "ZGVhZGJlZWY=ZGVhZGJlZWY="
+          encryption_key: "MqLWuv12+mOVDxRI7E0dK8Vx0+xy1gnRHEkzhXMBCac="
           wifi_ssid: "Some-SSID"
           wifi_password: "supersecretpassword"
           wifi_ap_password: "deadbeefdead"
