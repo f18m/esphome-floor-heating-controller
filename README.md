@@ -60,7 +60,7 @@ want to use the HomeAssistant UI: look for Helpers and choose `Generic Thermosta
 * ESP32 relay board [bought on Aliexpress](https://it.aliexpress.com/item/1005007027676026.html?spm=a2g0o.order_list.order_list_main.31.42f53696cth4st&gatewayAdapt=glo2ita) (17.5€ in Oct 2025).
 Its main characteristics are:
 
-  * Sports an [ESP32-WROOM-32E module](./datasheets/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf)
+  * Sports an [ESP32-WROOM-32E module](./datasheets/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf) with 240MHz clock, 320kB RAM, 4MB Flash
   * 5V DC power supply terminal
   * 8 relay channels, both NC and NO contacts available
 
@@ -72,6 +72,14 @@ Its main characteristics are:
     see https://esphome.io/components/sensor/max6675/
   * `DHT11`: Digital Temperature Humidity Sensor,
     see https://esphome.io/components/sensor/dht/
+
+Alternative sensors I also tested in an instance of this ESPHome Package are:
+
+  * `MAX31855` and a K-type thermocouple for reading pipe temperature,
+    see https://esphome.io/components/sensor/max31855/
+  * `DHT22`: Digital Temperature Humidity Sensor,
+    see https://esphome.io/components/sensor/dht/
+
 
 ## ESP32 Relay Board Pinout
 
@@ -95,6 +103,10 @@ In addition to these, the following GPIOs are used for the temperature sensors:
 
 * GPIO5: `DHT11` sensor
 * GPIO16 (MISO), GPIO17 (CLK) and GPIO15 (CS): for the SPI bus to read the `MAX6675` sensor
+
+Graph of the ESP-to-sensor connections:
+
+<img title="Sensors" alt="Sensors" src="images/ESP-to-sensors-connections.drawio.png">
 
 
 ## Full ESPHome configuration
@@ -126,7 +138,8 @@ esphome:
 
 which is basically assigning the secrets defined in the ESPHome global "secrets.yaml" to the variables of this package.
 Then it's overriding just the name & friendly name from the package.
-
+See e.g. [example-instance.yaml](./example-instance.yaml)
+and [example-instance-with-different-sensors.yaml](./example-instance-with-different-sensors.yaml).
 
 ## TODO
 
