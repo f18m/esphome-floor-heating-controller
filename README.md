@@ -143,8 +143,9 @@ and [example-instance-with-different-sensors.yaml](./example-instance-with-diffe
 
 ## TODO
 
-Write the [external component](https://esphome.io/components/external_components/) that will make it possible
-to control relays using the local temp sensor when connection to HA fails.
+* Write the [external component](https://esphome.io/components/external_components/) that will make it possible to control relays using the local temp sensor when connection to HA fails.
+
+* Signal wifi connectivity through the LED
 
 
 
