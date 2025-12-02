@@ -1,7 +1,31 @@
+#
+# Floor Heating Actuator Controller
+# ESPHome PACKAGE configuration file
+# See https://esphome.io/components/packages/
+#
+
+# Package available substitutions
+substitutions:
+  relay1_name: "Relay1"
+  relay2_name: "Relay2"
+  relay3_name: "Relay3"
+  relay4_name: "Relay4"
+  relay5_name: "Relay5"
+  relay6_name: "Relay6"
+  relay7_name: "Relay7"
+  relay8_name: "Relay8"
+  encryption_key: "your_encryption_key_here"
+  ota_password: "your_ota_password_here"
+  wifi_ssid: "your_wifi_ssid_here"
+  wifi_password: "your_wifi_password_here"
+  wifi_ap_password: "your_wifi_ap_password_here"
+
+# You might want to override this:
 esphome:
   name: floorheatingactuatorcontroller
   friendly_name: FloorHeatingActuatorController
 
+# Board
 esp32:
   board: esp32dev
   framework:
@@ -15,10 +39,11 @@ api:
   encryption:
     key: ${encryption_key}
 
+
+# Wireless Connectivity:
 ota:
   - platform: esphome
     password: ${ota_password}
-
 wifi:
   ssid: ${wifi_ssid}
   password: ${wifi_password}
@@ -28,6 +53,7 @@ wifi:
     ssid: "Floorheatingactuatorcontroller"
     password: ${wifi_ap_password}
 
+# Extra sensors:
 text_sensor:
   - platform: wifi_info
     ip_address:
@@ -58,6 +84,7 @@ spi:
   miso_pin: GPIO16
   clk_pin: GPIO17
 
+# Temperature sensors
 sensor:
   # Temperature sensor on SPI, see https://esphome.io/components/sensor/max6675/
   - platform: max6675
@@ -81,32 +108,33 @@ sensor:
       name: "Ambient Humidity"
     update_interval: 60s
 
+# Main relays controlling the floor heating zones
 switch:
   # relays use GPIOS 12-14, 23,25-27, 32-33
   - platform: gpio
     name: "LED"
     pin: GPIO23
   - platform: gpio
-    name: "Relay1"
+    name: ${relay1_name}
     pin: GPIO13
   - platform: gpio
-    name: "Relay2"
+    name: ${relay2_name}
     pin: GPIO12
   - platform: gpio
-    name: "Relay3"
+    name: ${relay3_name}
     pin: GPIO14
   - platform: gpio
-    name: "Relay4"
+    name: ${relay4_name}
     pin: GPIO27
   - platform: gpio
-    name: "Relay5"
+    name: ${relay5_name}
     pin: GPIO26
   - platform: gpio
-    name: "Relay6"
+    name: ${relay6_name}
     pin: GPIO25
   - platform: gpio
-    name: "Relay7"
+    name: ${relay7_name}
     pin: GPIO33
   - platform: gpio
-    name: "Relay8"
+    name: ${relay8_name}
     pin: GPIO32
