@@ -5,6 +5,9 @@ This is an [ESPHome](https://esphome.io/) project to present to [HomeAssistant](
 In particular this project provides an [ESPHome package](https://esphome.io/components/packages/) that is easy to reference
 from an ESPHome configuration. Keep reading for more details.
 
+<img title="ESPHome" alt="ESPHome" src="images/esphome.png">
+
+
 ## Highlights
 
 * Plain simple actuator board, all the hardware is Commercial Off-The-Shelf (COTS), 
