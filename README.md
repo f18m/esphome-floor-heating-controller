@@ -112,9 +112,10 @@ Graph of the ESP-to-sensor connections:
 <img title="Sensors" alt="Sensors" src="images/ESP-to-sensors-connections.drawio.png">
 
 
+
 ## Full ESPHome configuration
 
-See the [main.yaml](./main.yaml) file.
+See the [main.yaml](./main.yaml) file for the ESPHome package provided by this project.
 Please note that this is an [ESPHome package](https://esphome.io/components/packages/) and thus it uses [substitutions](https://esphome.io/components/substitutions/) to make the YAML config file as reusable as possible.
 
 An actual ESPHome YAML config using this package could be:
@@ -143,6 +144,37 @@ which is basically assigning the secrets defined in the ESPHome global "secrets.
 Then it's overriding just the name & friendly name from the package.
 See e.g. [example-instance.yaml](./example-instance.yaml)
 and [example-instance-with-different-sensors.yaml](./example-instance-with-different-sensors.yaml).
+
+
+## First ESPHome install
+
+When you receive your ESP32 relay board, you will need to carry out the first ESPHome installation
+by "wire". Afterwards, you'll be able to install any ESPHome profile over the wireless connection using
+the so-called On-The-Air update (OTA update).
+
+Make sure you read carefully the [ESPHome guide](https://esphome.io/guides/physical_device_connection/)
+on how to Physically Connecting to your Device.
+
+You will need a USB-to-serial module.
+I bought [one on Aliexpress](https://it.aliexpress.com/item/1005004742270942.html?spm=a2g0o.order_list.order_list_main.107.33a03696c66vOs&gatewayAdapt=glo2ita) for 2€.
+A couple of pictures zooming on the programmer itself and then its connections to the ESP32 relay board:
+
+<img title="Programmer" alt="Prorgammer" src="images/programmer.jpg">
+<img title="Programmer" alt="Prorgammer" src="images/programmer_connection.jpg">
+
+Once physical connection is ready, you will be able to install ESPHome initial firmware:
+
+1. Log on your HomeAssistant and go to the ESPHome web interface
+2. Create a new device, copy-pasting the [example-instance.yaml](./example-instance.yaml)
+3. Launch "Validate" from the 3-dots menu for your new ESPHome device
+4. Launch "Install" from the 3-dots menu for your new ESPHome device and choose "Plug into this computer" option:
+
+
+<img title="Programmer" alt="Prorgammer" src="images/programmer_esphome.png.jpg">
+
+After successful flashing you should be able to see logs coming from your board and, if the Wifi credentials
+are OK, your board should appear in the list of DHCP clients of your DHCP server.
+
 
 ## TODO
 
