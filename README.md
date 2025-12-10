@@ -159,8 +159,8 @@ You will need a USB-to-serial module.
 I bought [one on Aliexpress](https://it.aliexpress.com/item/1005004742270942.html?spm=a2g0o.order_list.order_list_main.107.33a03696c66vOs&gatewayAdapt=glo2ita) for 2€.
 A couple of pictures zooming on the programmer itself and then its connections to the ESP32 relay board:
 
-<img title="Programmer" alt="Prorgammer" src="images/programmer.jpg">
-<img title="Programmer" alt="Prorgammer" src="images/programmer_connection.jpg">
+<img title="Programmer" alt="Programmer" src="images/programmer.jpg">
+<img title="Programmer" alt="Programmer" src="images/programmer_connection.jpg">
 
 Once physical connection is ready, you will be able to install ESPHome initial firmware:
 
@@ -170,10 +170,22 @@ Once physical connection is ready, you will be able to install ESPHome initial f
 4. Launch "Install" from the 3-dots menu for your new ESPHome device and choose "Plug into this computer" option:
 
 
-<img title="Programmer" alt="Prorgammer" src="images/programmer_esphome.png.jpg">
+<img title="Programmer" alt="Programmer" src="images/programmer_esphome.png">
 
 After successful flashing you should be able to see logs coming from your board and, if the Wifi credentials
 are OK, your board should appear in the list of DHCP clients of your DHCP server.
+
+
+## Labelling of the board
+
+Since most likely your floor heating controller will be installed in some hidden box
+and will stay around for a lot of time (many years hopefully), I suggest to provide 
+some documentation reference for that.
+A simple approach is to print a QR code pointing at this page.
+
+Here you can find a QR code I produced with the optimal [miniQR code generator](https://mini-qr-code-generator.vercel.app/):
+
+<img title="Programmer" alt="Programmer" src="images/qr-code.png">
 
 
 ## TODO
