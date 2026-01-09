@@ -67,7 +67,7 @@ Its main characteristics are:
   * 5V DC power supply terminal
   * 8 relay channels, both NC and NO contacts available
 
-<img title="Relay board" alt="Relay board" src="images/esp-relay-board-bare.png">
+<img title="Relay board" alt="Relay board" src="images/esp-relay-board-bare.jpg">
 
 
 * 220V to 5V power adapter (5W), [bought on Aliexpress](https://it.aliexpress.com/item/1005006981553550.html?spm=a2g0o.order_list.order_list_main.47.45de36964bR8Kp&gatewayAdapt=glo2ita) (4€ in Oct 2025)
