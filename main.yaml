@@ -53,6 +53,14 @@ wifi:
     ssid: "Floorheatingactuatorcontroller"
     password: ${wifi_ap_password}
 
+  # attempt to resolve an issue where the ESP32 sometimes fails to reconnect to WiFi
+  # and needs a power-cycle to recover
+  reboot_timeout: 1min
+  power_save_mode: none
+  enable_btm: true  # 802.11v BSS Transition Management
+  enable_rrm: true  # 802.11k Radio Resource Management
+
+
 # Extra sensors:
 text_sensor:
   - platform: wifi_info
