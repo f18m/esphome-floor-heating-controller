@@ -122,27 +122,36 @@ switch:
   - platform: gpio
     name: "LED"
     pin: GPIO23
+    restore_mode: RESTORE_DEFAULT_OFF
   - platform: gpio
     name: ${relay1_name}
     pin: GPIO13
+    restore_mode: RESTORE_DEFAULT_OFF
   - platform: gpio
     name: ${relay2_name}
     pin: GPIO12
+    restore_mode: RESTORE_DEFAULT_OFF
   - platform: gpio
     name: ${relay3_name}
     pin: GPIO14
+    restore_mode: RESTORE_DEFAULT_OFF
   - platform: gpio
     name: ${relay4_name}
     pin: GPIO27
+    restore_mode: RESTORE_DEFAULT_OFF
   - platform: gpio
     name: ${relay5_name}
     pin: GPIO26
+    restore_mode: RESTORE_DEFAULT_OFF
   - platform: gpio
     name: ${relay6_name}
     pin: GPIO25
+    restore_mode: RESTORE_DEFAULT_OFF
   - platform: gpio
     name: ${relay7_name}
     pin: GPIO33
+    restore_mode: RESTORE_DEFAULT_OFF
   - platform: gpio
     name: ${relay8_name}
     pin: GPIO32
+    restore_mode: RESTORE_DEFAULT_OFF
