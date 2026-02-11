@@ -116,13 +116,14 @@ sensor:
       name: "Ambient Humidity"
     update_interval: 60s
 
+# Status LED: indicates WiFi/API connection status
+# GPIO23 LED will be ON when connected, blinking when disconnected
+status_led:
+  pin: GPIO23
+
 # Main relays controlling the floor heating zones
 switch:
-  # relays use GPIOS 12-14, 23,25-27, 32-33
-  - platform: gpio
-    name: "LED"
-    pin: GPIO23
-    restore_mode: RESTORE_DEFAULT_OFF
+  # relays use GPIOS 12-14, 25-27, 32-33 (GPIO23 is used for status LED)
   - platform: gpio
     name: ${relay1_name}
     pin: GPIO13
