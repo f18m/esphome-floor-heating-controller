@@ -19,7 +19,7 @@ substitutions:
   wifi_ssid: "your_wifi_ssid_here"
   wifi_password: "your_wifi_password_here"
   wifi_ap_password: "your_wifi_ap_password_here"
-  syslog_server: "ip address of your syslog server here or empty if you don't want logging"
+  syslog_server: "your_syslog_server_ip_here"
   syslog_port: "514"  # default syslog port is 514, but you can change it if your server uses a different port
 
 # You might want to override this:

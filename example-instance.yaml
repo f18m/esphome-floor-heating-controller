@@ -9,5 +9,6 @@ packages:
           wifi_password: "supersecretpassword"
           wifi_ap_password: "deadbeefdead"
           ota_password: "deadbeefdeadbeefdeadbeefdeadbeef"
+          syslog_server: "1.1.1.1"
     ref: main  # optional
     refresh: 1d  # optional
