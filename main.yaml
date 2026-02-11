@@ -19,6 +19,8 @@ substitutions:
   wifi_ssid: "your_wifi_ssid_here"
   wifi_password: "your_wifi_password_here"
   wifi_ap_password: "your_wifi_ap_password_here"
+  syslog_server: "ip address of your syslog server here or empty if you don't want logging"
+  syslog_port: "514"  # default syslog port is 514, but you can change it if your server uses a different port
 
 # You might want to override this:
 esphome:
@@ -156,3 +158,19 @@ switch:
     name: ${relay8_name}
     pin: GPIO32
     restore_mode: RESTORE_DEFAULT_OFF
+
+udp:
+  # syslog server
+  addresses: ${syslog_server}
+
+time:
+  platform: sntp
+  timezone: Europe/Rome
+  servers:
+    - 0.pool.ntp.org
+    - 1.pool.ntp.org
+    - 2.pool.ntp.org
+
+syslog:
+  # emit syslog messages to server defined under "udp"
+  port: ${syslog_port}
