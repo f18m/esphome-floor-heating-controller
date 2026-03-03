@@ -64,13 +64,13 @@ want to use the HomeAssistant UI: look for Helpers and choose `Generic Thermosta
 Its main characteristics are:
 
   * Sports an [ESP32-WROOM-32E module](./datasheets/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf) with 240MHz clock, 320kB RAM, 4MB Flash
-  * 5V DC power supply terminal
+  * 5V DC power supply terminals
   * 8 relay channels, both NC and NO contacts available
 
 <img title="Relay board" alt="Relay board" src="images/esp-relay-board-bare.jpg">
 
 
-* 220V to 5V power adapter (5W), [bought on Aliexpress](https://it.aliexpress.com/item/1005006981553550.html?spm=a2g0o.order_list.order_list_main.47.45de36964bR8Kp&gatewayAdapt=glo2ita) (4€ in Oct 2025)
+* 220V to 5V power adapter (10W), [bought on Aliexpress](https://it.aliexpress.com/item/1005011566356715.html?spm=a2g0o.order_list.order_list_main.41.53a81802JCkFmo&gatewayAdapt=glo2ita) (4€ in Oct 2025); please note that it's very important that you choose a power adapter module that can provide up to 2Amps because when the relay modules switch simultaneously, they can draw quite a good amount of power. I had many issues with the ESP32 board hanging or rebooting during OFF->ON transitions due to power supplies that were rated just 5V and 1A (5W).
 
 * Temperature sensors, bought on Aliexpress (few € in Oct 2025)
 
