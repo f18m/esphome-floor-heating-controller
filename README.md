@@ -138,6 +138,14 @@ packages:
           wifi_password: !secret wifi_password
           wifi_ap_password: !secret wifi_ap_password
           ota_password: !secret ota_password
+          relay1_name: "Living Room Relay"
+          relay2_name: "Bedroom Relay"
+          relay3_name: "Kitchen Relay"
+          relay4_name: "Bathroom Relay"
+          relay5_name: "Dining Room Relay"
+          relay6_name: "Office Relay"
+          relay7_name: "Guest Room Relay"
+          relay8_name: "Hallway Relay"
     ref: main  # optional
     refresh: 1d  # optional
 
@@ -150,6 +158,17 @@ which is basically assigning the secrets defined in the ESPHome global "secrets.
 Then it's overriding just the name & friendly name from the package.
 See e.g. [example-instance.yaml](./example-instance.yaml)
 and [example-instance-with-different-sensors.yaml](./example-instance-with-different-sensors.yaml).
+
+
+Also note that the [ESPHome package](./main.yaml) from this repo will use the board LED to act
+as the ESPHome [status LED](https://esphome.io/components/status_led/). So as summary:
+
+* It will **blink slowly (about every second) when a warning is active**. Warnings are active when for example reading a sensor value fails temporarily, the WiFi/MQTT connections are disrupted, or if the native API component is included but no client is connected.
+
+* It will **blink quickly (multiple times per second) when an error is active**. Errors indicate that ESPHome has found an error while setting up. In most cases, ESPHome will still try to recover from the error and continue with all other operations.
+
+* It will **stay off otherwise**.
+
 
 
 ## First ESPHome install
@@ -197,8 +216,6 @@ Here you can find a QR code I produced with the optimal [miniQR code generator](
 ## TODO
 
 * Write the [external component](https://esphome.io/components/external_components/) that will make it possible to control relays using the local temp sensor when connection to HA fails.
-
-* Signal wifi connectivity through the LED
 
 
 

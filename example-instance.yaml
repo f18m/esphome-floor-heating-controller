@@ -9,6 +9,14 @@ packages:
           wifi_password: "supersecretpassword"
           wifi_ap_password: "deadbeefdead"
           ota_password: "deadbeefdeadbeefdeadbeefdeadbeef"
+          relay1_name: "Living Room Relay"
+          relay2_name: "Bedroom Relay"
+          relay3_name: "Kitchen Relay"
+          relay4_name: "Bathroom Relay"
+          relay5_name: "Dining Room Relay"
+          relay6_name: "Office Relay"
+          relay7_name: "Guest Room Relay"
+          relay8_name: "Hallway Relay"
           syslog_server: "1.1.1.1"
     ref: main  # optional
     refresh: 1d  # optional
