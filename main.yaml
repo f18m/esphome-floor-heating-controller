@@ -6,6 +6,9 @@
 
 # Package available substitutions
 substitutions:
+  # relay names -- these help you understand in HomeAssistant which relay is 
+  # connected to which floor heating zone, without having to remember which 
+  # GPIO pin corresponds to which zone
   relay1_name: "Relay1"
   relay2_name: "Relay2"
   relay3_name: "Relay3"
@@ -14,11 +17,14 @@ substitutions:
   relay6_name: "Relay6"
   relay7_name: "Relay7"
   relay8_name: "Relay8"
+  # secrets -- these allow the ESPHome device to "talk" to your Wifi and
+  # your HomeAssistant instance
   encryption_key: "your_encryption_key_here"
   ota_password: "your_ota_password_here"
   wifi_ssid: "your_wifi_ssid_here"
   wifi_password: "your_wifi_password_here"
   wifi_ap_password: "your_wifi_ap_password_here"
+  # logging -- for extra debugging
   syslog_server: "your_syslog_server_ip_here"
   syslog_port: "514"  # default syslog port is 514, but you can change it if your server uses a different port
 
@@ -26,6 +32,7 @@ substitutions:
 esphome:
   name: floorheatingactuatorcontroller
   friendly_name: FloorHeatingActuatorController
+  comment: "Relay board controlling under-floor heating pipes"
 
 # Board
 esp32:
@@ -41,7 +48,6 @@ api:
   encryption:
     key: ${encryption_key}
 
-
 # Wireless Connectivity:
 ota:
   - platform: esphome
@@ -54,14 +60,6 @@ wifi:
   ap:
     ssid: "Floorheatingactuatorcontroller"
     password: ${wifi_ap_password}
-
-  # attempt to resolve an issue where the ESP32 sometimes fails to reconnect to WiFi
-  # and needs a power-cycle to recover
-  reboot_timeout: 1min
-  power_save_mode: none
-  enable_btm: true  # 802.11v BSS Transition Management
-  enable_rrm: true  # 802.11k Radio Resource Management
-
 
 # Extra sensors:
 text_sensor:
