@@ -1,4 +1,4 @@
-# floor-heating-controller
+# esphome-floor-heating-controller
 
 This is an [ESPHome](https://esphome.io/) project to present to [HomeAssistant](https://www.home-assistant.io/) a floor heating controller, i.e. a board that can turn on or off the flow of warm water in under-floor heating pipes.
 
@@ -16,6 +16,26 @@ typically available on Aliexpress, and very cheap; easy to replace in future if 
 * Designed to be capable of running in a dumb, non-smart mode if Wi-fi connection drops
 or your HomeAssistant instance has troubles;
 * Presents _N_ basic switches plus 2 temperature sensors to Home Assistant; each switch represents an heating under-floor circuit; temperatures are sampled for both the incoming warm water and for room temperature
+
+
+## Floor Heating Overview
+
+This project is all about controlling the thermal actuators that are typically installed
+on the floor heating manifold:
+
+<img title="Floor heating manifold" alt="Floor heating manifold" src="images/floor-heating-manifold.png">
+
+Please note that the thermal actuators I have installed in my manifolds are pretty standard ones. Here's a brief summary of their properties:
+
+* Electrical:
+    * powered at 220V in this project (but since the relay board exposes dry contacts, it could be used to power also 24V thermal actuators).
+    * normally-closed (NC)
+    * 3W power consumption
+
+* Mechanical:
+    * installation size: M30 x 1.5 mm
+    * 4.5mm stroke
+    * response time: 180-300s
 
 
 ## Architecture Overview
