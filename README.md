@@ -10,22 +10,22 @@ from an ESPHome configuration. Keep reading for more details.
 
 ## Highlights
 
-* Plain simple actuator board, all the hardware is Commercial Off-The-Shelf (COTS), 
+* Plain simple actuator board, all the hardware is **Commercial Off-The-Shelf** (COTS), 
 typically available on Aliexpress, and very cheap; easy to replace in future if it fails;
 * Connects to your [Home Assistant](https://www.home-assistant.io/) instance via Wi-fi;
-* Designed to be capable of running in a dumb, non-smart mode if Wi-fi connection drops
+* Designed to be **capable of running in a dumb, non-smart mode** if Wi-fi connection drops
 or your HomeAssistant instance has troubles;
-* Presents _N_ basic switches plus 2 temperature sensors to Home Assistant; each switch represents an heating under-floor circuit; temperatures are sampled for both the incoming warm water and for room temperature
+* Exposing to HomeAssistant up to 8 basic switches plus 2 temperature sensors; each switch represents an heating under-floor circuit; temperature sensors provides measurements for both the incoming warm water and for the room temperature.
 
 
 ## Floor Heating Overview
 
-This project is all about controlling the thermal actuators that are typically installed
-on the floor heating manifold:
+This project is all about controlling the **thermal actuators** that are typically installed
+on the floor heating **manifold**:
 
 <img title="Floor heating manifold" alt="Floor heating manifold" src="images/floor-heating-manifold.png">
 
-Please note that the thermal actuators I have installed in my manifolds are pretty standard ones. Here's a brief summary of their properties:
+Please note that the thermal actuators I have installed in my manifolds (and automated by this project) are pretty standard ones. Here's a brief summary of their properties:
 
 * Electrical:
     * powered at 220V in this project (but since the relay board exposes dry contacts, it could be used to power also 24V thermal actuators).
@@ -36,6 +36,8 @@ Please note that the thermal actuators I have installed in my manifolds are pret
     * installation size: M30 x 1.5 mm
     * 4.5mm stroke
     * response time: 180-300s
+
+Finally note that this project does not provide any attempt to make the flow-meters smart devices. That would be a nice plus but probably not very useful in practice (?)
 
 
 ## Architecture Overview
