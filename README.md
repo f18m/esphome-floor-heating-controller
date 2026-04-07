@@ -37,6 +37,8 @@ Please note that the thermal actuators I have installed in my manifolds (and aut
     * 4.5mm stroke
     * response time: 180-300s
 
+Electrical consideration: the amount of Amperes flowing on the relay board presented below will be minimal: at 220V to supply the rated 3W power of each actuator the wires need to carry only about 14mA.
+
 Finally note that this project does not provide any attempt to make the flow-meters smart devices. That would be a nice plus but probably not very useful in practice (?)
 
 
@@ -92,7 +94,8 @@ Its main characteristics are:
 <img title="Relay board" alt="Relay board" src="images/esp-relay-board-bare.jpg">
 
 
-* 220V to 5V power adapter (10W), [bought on Aliexpress](https://it.aliexpress.com/item/1005011566356715.html?spm=a2g0o.order_list.order_list_main.41.53a81802JCkFmo&gatewayAdapt=glo2ita) (4€ in Oct 2025); please note that it's very important that you choose a power adapter module that can provide up to 2Amps because when the relay modules switch simultaneously, they can draw quite a good amount of power. I had many issues with the ESP32 board hanging or rebooting during OFF->ON transitions due to power supplies that were rated just 5V and 1A (5W).
+* 220V to 5V power adapter (10W), [bought on Aliexpress](https://it.aliexpress.com/item/1005011566356715.html?spm=a2g0o.order_list.order_list_main.41.53a81802JCkFmo&gatewayAdapt=glo2ita) (4€ in Oct 2025); please note that it's very important that you choose a power adapter module that can provide up to 2Amps because when the relay modules switch simultaneously, they can draw quite a good amount of power. [I had many issues](https://community.home-assistant.io/t/power-cycle-needed-after-triggering-a-relay-off-on-what-about-the-software-watchdog/986634/3) with the ESP32 board hanging or rebooting during OFF->ON transitions due to power supplies that were rated just 5V and 1A (5W).
+Finally see also the section down below "Power Consumption".
 
 * Temperature sensors, bought on Aliexpress (few € in Oct 2025)
 
@@ -233,6 +236,27 @@ A simple approach is to print a QR code pointing at this page.
 Here you can find a QR code I produced with the optimal [miniQR code generator](https://mini-qr-code-generator.vercel.app/):
 
 <img title="Programmer" alt="Programmer" src="images/qr-code.png">
+
+
+
+## Final assembly
+
+TO WRITE / PUT SOME PICTURE HERE
+
+
+## Power consumption
+
+Some consideration about power consumption, assuming worst case scenario:
+
+* all 8 relays turned ON, plus all their LEDs light on
+* ESP32 being full powered ON, peaking at 240mA of power usage
+* each relay drawing about 100mA to power on
+* each LED drawing 20mA 
+* temperature sensors have a <2mA power usage and thus are negligible
+
+A back-of-the-envelope computation gives a total of **~1.2Amps** of power drawn from the 5V rail, which means about **7W**.
+
+The power consumption on the 220V rail is, again in the worst case, **~35W** assuming 8 thermal actuators all open and all consuming about 3W (pretty standard), plus the 7W power usage for the controller board.
 
 
 ## TODO
